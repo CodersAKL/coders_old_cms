@@ -1,0 +1,1 @@
+Svetainėje SMS reklama nemokama: <strong>{php}include("modules/adds/adds_sms.php");{/php}</strong>

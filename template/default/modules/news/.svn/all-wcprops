@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/50doVmYmShXgk/!svn/ver/14/template/default/modules/news
+END
+news_all.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/50doVmYmShXgk/!svn/ver/13/template/default/modules/news/news_all.tpl
+END
+news_read.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/50doVmYmShXgk/!svn/ver/14/template/default/modules/news/news_read.tpl
+END
+news_main.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/50doVmYmShXgk/!svn/ver/14/template/default/modules/news/news_main.tpl
+END

@@ -1,0 +1,89 @@
+.htaccess failo turinys
+
+RewriteEngine On
+#RewriteRule ^([0-9A-Za-z]+)/ index.php?module=$1
+RewriteRule ^naujienos/([0-9_A-Za-z]+) index.php?module=news&name=$1
+RewriteRule ^naujienos/ index.php?module=news
+RewriteRule ^admin/(.*)/(.*) admin/index.php?module=admin&name=$1&pize=$2
+
+Moduliu sistema dariau kaip imanoma supaprastindamas ir automatizuodamas viska
+Nevisai dar baigiau bet pvz toks:
+admin/index.php
+sitas failas patikrina linkus, patikrina moduliu folderius
+ir isveda statistika apie juos. jei paspaudziamas koks nors modulis turi buti includinamas failas [modulis]_admin.php
+[modulis]_admin.php faile turi buti visi veiksmai. Tas failas taippat turi iskviesti (jei reikia) savo stiliaus *.tpl faila
+
+Puslapiu apacioje uzkraunu pastoviai debugeri. Kad aiskiau butu kokie kintamieji
+admin paneles adresa/url tikrinu sprogdindamas (explode) pvz admin/news/post/new/bla/aga_jo
+informacija isgaunu tokiu principu:
+htaccess failas man grazina:
+    [get] => Array
+        (
+            [module] => admin
+            [name] => news/post/new/bla/aga_jo
+        )
+imu _GET['name'] susprogdinu ji pagal / ir gaunu masyva:
+            [0] => news
+            [1] => post
+            [2] => new
+            [3] => bla
+            [4] => aga_jo
+pagal sita masyva atlieku moduliui budingus veiksmus.
+
+Admin paneleje nepadariau includo bet vieta jau numaciau admin/index.php 64 eilute
+
+P.S. pati esme jau kaip ir veikia. Pastebejau kad jei tpl failuos includini header ir footer tai tampa nepatogu.
+geriau php faile paciam nuspresti kada ir kur koki tpl atvaizduoti. Stengiausi daryti modulius kaip imanoma viens nuo kito nepriklausomesnius.
+Beto - stengiuosi su php visa informacija SMARTy TPL failams paduoti nesuformuota pvz: jei siunciu data tai geriau ja siusti tiesiog time()
+o su *.tpl jau nuo dizaino priklausys kaip ta data atvaizduoti. Ta pati darau ir su lentelemis
+Atkreipk demesi i admin indexini puslapi. Ta lentele apie moduliu statistika suformuota SMARTY tam reikalui sukuriau table.tpl templeyta.
+Klaidoms pranesti naudok none.tpl - dar reiks patobulinti tai nes manau bus reikalingas error modulis. Reikes zmonems patiems kurtis 404, 405 ir kitu puslapiu isvaizda bei rodoma info
+Del skirtingu kalbu, tai mastau kad gal geriau daryti kalbu failuose define("_FILE","Dokumentas"); principu. Nes tokiu atveju jei kurnors panaudosim
+neegzistuojanti kalbos issireiskima pvz: _FILESS tai ji puslapyje taip ir atvaizduos, nebus tuscia vieta ar koks klaidos pranesimas.
+Dar reikia paziureti ar *.tpl failai paims defined() kalbos issireiskimus.
+
+Dabar labiausiai reikia:
+sutvarkyti kalbu pasirinkima
+Uzbaigti naujienu moda (beliko administravimas)
+Sukurti galerijos moda (panasu i prekiu pateikima, ta prasme foto su aprasymu - cia bus uzsakymui to skulptoriaus kartu)
+Vartotoju moda
+Na ir pasizaidimui adds moda. Seip smagu jei tai butu suderinama su mokejimai.lt SMS'u apmokejimu
+
+P.S.2 Prie kiekvieno modo dedu [modulis].ini faila. Jame rasau info apie moduli, kokia db lentele, kokia info iterpiama.
+Cia ateiciai, kai moduli instaliuos zmogus automatiskai tures imti info is to ini failo ir sukurti db lenteles ir t.t.
+Dar svaigstu apie moduliu automatini atsinaujinima arba bentjau pranesima kad isejo nauja versija, todel tame ini faile tures buti ir info apie adresa kur tikrinti atnaujinimus. (na neesme)
+
+Sekmes. Savaitgalis man bus uzimtas (gimtadienis, isvyka, mokslai) jei ka rasyk SMS 68270563 arba gal dar gtalk susimatysim
+
+Beje uzsiregistruok https://www.freepository.com/ del SVN bus lengviau dirbti
+
+;##################################### Min2liz to FDisk ###########################
+;###### 2007-04-10
+
+Imeciau i Admin panele Tree menu. kodel? Jei pirmimame admin puslapyje pasirinki koki nors 
+punkta i ji ir nueini o kaip sugryzti/pereiti i kita punkta? 
+Tam labai patogus sis dalykas. Beje pasirinkus norima punkta tarkim butu taip:
+
+Root Level
+  Pagrindinis
+  Forumas
+  Straipsniai
+    PHP Straipsniai
+    JavaScript straipsniai
+
+
+Tokiu budu pasitinkus tarkim Straipsniai ismestu to modulio konfiguracija ir tuo paciu butu papildomi punktai.
+Mansu tai nebus blogas dalykas.
+
+;######################################## Headeriai ###################
+;##### 2007-14-15
+
+Jei noresi redirekta daryti per headerius, tarkim nera kokio puslapio ir nori kur nors numesti
+zmogu. Naudok tokias eilutes:
+
+	Header( "HTTP/1.1 301 Moved Permanently" );
+	Header( "Location: " . $_SERVER['PHP_SELF'] );
+
+Tokiu atveju Plius del SEO nesveikai padeda... 
+O redirektina kaip visad... Tiek vietoj to $_SERVER['PHP_SELF'] nurodyk kur nori redirektinti.
+

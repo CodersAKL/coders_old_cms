@@ -1,0 +1,14 @@
+<body onClick="nameas.focus()">
+<script type="text/javascript">
+function modalWin() {
+	if (window.showModalDialog) {
+		window.showModalDialog("loading.html","nameas","dialogWidth:255px;dialogHeight:250px");
+	} else {
+		window.open('loading.html','nameas','height=255,width=250,resizable=no,dialog=1');
+	}
+}
+</script>
+
+<p><a href="http://www.spreadfirefox.com/" target="PromoteFirefoxWindowName" onclick="modalWin(); return false;" title="This link will create a new window or will re-use an already opened one">POP-UP</a></p>
+<button onClick="alert('Tau pavyko')">Kai atsidarys langas spausk cia</button>
+</body>

@@ -1,0 +1,52 @@
+Katalogai:
+
+##############################################
+
+
+;Direktorija - /images/
+;Aprasymas   - Sioje direktorija laikomos visos nuotraukos kurios naudojamos visada. Tarkim copyright logo or smth. nesugalvoju taip staigiai kam
+
+###################################################
+
+;Direktorija - /modules/module/
+;Aprasymas   - MODULE keiciamas i modulio pavadinimas. Tarkim FORUM tai adresas butu /module/forum/ jame laiko visi failai susije su forumo. Vienintelis
+		ir pagrindinis pirmiausia includinamas main_module.php modulis kuris paskirsto (jei reikia) sekancius darbus papildomiems modulems. Jau cia
+		pavadinimus gali rasyt kaip nori.
+
+;Direktorija - /modules/module/images/ 
+;Aprasymas   - To modulio defaultiniai paveiksliukai. Tarkim "rasyti tema" "pranesti" ir t.t. 
+
+;Direktorija - /modules/module/admin/
+;Aprasymas   - To modulio administracija. T.y. moduliai kurie bus viduje bus includinami, jei reikia tik per admin panele.
+
+###################################################
+
+;Direktorija - /admin/ 
+;Aprasymas    Pagrindinis dir'as kuris leidziamas tik prisijungusiam adminui. Jame dar paskirstomi toliau ka reikia
+
+;Direktorija - /admin/images/
+;Aprasymas   - Laikomi visi paveiksliukai admino. Primenu kad ADMIN panele template nesikeicia... Perdaug darbo kaip admin panelej... Gal veliau kada
+
+###################################################
+
+;Direktorija - /js/
+;Aprasymas   - Visi JavaScript. Jei vienam moduliui, tarkim TinyMCE neuztenka vieno JS kisam i atskira dir: js/tinymce/
+
+###################################################
+
+;Direktorija - /system/class/ 
+;Aprasymas   - Classes kurios naudojamos visada. T.y. Smarty ir panasiai. 
+
+##################################################
+
+;Direktorija - /template/ 
+;Aprasymas   - Sudedamos visos template. T.y. tarkim butu CodeRS template: template/CodeRS/
+
+:Direktorija - /template/default/
+:Aprasymas   - Laikoma pagrindinej tpl failai template. index.tpl, header.tpl, footer.tpl ir panasiai
+
+;Direktorija - /template/default/image/
+;Aprasymas   - Visi paveiksliukai kurie susije su template
+
+;Direktorija - /template/defaut/module/
+;Aprasymas   - Pasirinkto modulio template. Tarkim FORUM butu temlate/default/forum o jame ideti .tpl failai kaip turi atrodyti forumas

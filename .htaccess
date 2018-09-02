@@ -1,0 +1,17 @@
+
+RewriteEngine On
+
+#bandziau base nustatyti bet nesuveikia
+#RewriteBase /
+
+#Naujienos
+RewriteRule ^news/(.*) index.php?module=news&explode=$1
+
+#Naujienos
+RewriteRule ^article/(.*) index.php?module=article&explode=$1
+
+#Naujienos
+RewriteRule ^user/(.*) index.php?module=user&explode=$1
+
+#Admin paneles alias'ai
+RewriteRule ^admin/(.*)/(.*) admin/index.php?module=admin&name=$1&pize=$2

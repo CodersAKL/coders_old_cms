@@ -1,0 +1,20 @@
+.calWTitle {
+	font: bold 10px Tahoma, Verdana, sans-serif;
+	color: #FFFFFF;
+}
+.calThisMonth {
+	font: 12px Tahoma, Verdana, sans-serif;
+	color: #000000;
+}
+.calOtherMonth {
+	font: 12px Tahoma, Verdana, sans-serif;
+	color: #808080;
+}
+.calMonthselector {
+	width:100%;
+}
+.calToday {
+	border: dotted 2 red; 
+	width: 100%; 
+	margin: 0px;
+}

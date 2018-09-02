@@ -1,0 +1,32 @@
+<?php
+
+$article_sql = mysql_query("
+							SELECT
+								`straipsniai`.`pavadinimas`,
+								`straipsniai`.`aprasymas`,
+								`straipsniai`.`straipsnis`,
+								`straipsniai`.`autorius`,
+								`straipsniai`.`data`,
+								`straipsniai_kategorijos`.`kategorija`,
+								`straipsniai_kategorijos`.`alias`,
+								`straipsniai`.`balsavimas`
+							FROM
+								`straipsniai`
+							Inner Join `straipsniai_kategorijos` ON `straipsniai`.`kategorija_id` = `straipsniai_kategorijos`.`id`
+							WHERE
+								`straipsniai`.`alias` =  '" . $_GET['explode'][1] ."' AND
+								`straipsniai`.`aktyvus` =  'Y'
+				");
+if (mysql_num_rows($article_sql) == 0) {	$error = "Atsiprasome bet straipsnis nerastas";
+	$smarty->assign("error",$error);
+	$smarty->assign("style",$style);
+	$mods['content'] = "none.tpl";
+	unset($error);
+}
+else {
+	// Issikvieciam stiliu ir isvedam rezultata	$smarty->assign("style",$style);
+	$mods['content'] = "modules/article/article_show.tpl";
+}
+
+
+?>

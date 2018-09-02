@@ -1,0 +1,76 @@
+Jokiu budu nebandyk trinti kalbu
+
+Trynimas veikia, bet veikia tiek kad trinu viska nafyk, tik palikdamas default kalba
+geriau palik ru/en/lt kalbas ramybej, susikurk kokia kalba ir testink
+
+Bo nors pofyk dar ru kalba gali trinti, o jau en/lt prirasyta, tai gaila butu prarast
+
+
+Beje siunciu sql failus du 
+isimesk ir atsinaujink
+
+
+####################kalbos_nustatymai####################
+
+CREATE TABLE `kalbos_nustatymai` (
+  `value` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `title` varchar(200) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `default` varchar(1) character set utf8 collate utf8_unicode_ci NOT NULL default 'N'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+INSERT INTO `kalbos_nustatymai` VALUES ('lt', 'Lietuviø', 'Y');
+INSERT INTO `kalbos_nustatymai` VALUES ('en', 'English', 'N');
+INSERT INTO `kalbos_nustatymai` VALUES ('ru', 'Rusu', 'N');
+
+
+$$$$$$$$$$$$$$$$$$$$$ Atsinaujink kalbu sql $$$$$$$$$$$$$$$$$$$$$$
+
+CREATE TABLE `kalbos` (
+  `value` varchar(255) collate latin1_general_ci NOT NULL,
+  `lang_lt` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  `lang_en` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  `lang_ru` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  `lang_de` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  `lang_se` text collate latin1_general_ci NOT NULL,
+  `lang_lv` text collate latin1_general_ci NOT NULL,
+  `lang_es` text collate latin1_general_ci NOT NULL,
+  UNIQUE KEY `value` (`value`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+
+INSERT INTO `kalbos` VALUES ('article_categories', 'Kategorijos', 'Categories', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_author', 'Autorius', 'Author', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_date', 'Data', 'Date', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_category', 'Kategorija', 'Category', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_vote', 'Balsai', 'Vote', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_from', 'ið', 'from', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_config', 'Konfigûracija', 'Settings', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_show_categories', 'Rodyti kategorijas', 'Show categories', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_allow_vote', 'Leisti balsuoti', 'Allow to vote', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_show_new', 'Rodyti naujausius straipsnius', 'Show new Articles', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_show_only_see_admin', 'Straipsnius rodyti tik po Administratoriaus perþiûros', 'Show articles only then Administrator saw', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_allow_send', 'Leisti atsiøsti straipsnius ið kitø þmoniø', 'Allow to send article from another people', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_inform_sebscribers', 'Praneðti prenumeratorius apie naujà straipsná', 'Inform subscribers about new Article', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_allow_to_write', 'Leisti raðyti straipsná svetainëje', 'Allow to write Article in web', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_allow_send_in_email', 'Leisti atsiøsti straipsná á paðtà', 'Allow to send Article in Email', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_show_num', 'Rodyti straipsnius ', 'Show articles', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_per_page', 'puslapyje', 'per page', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_allow_comment', 'Leisti komentuoti straipsnius', 'Allow to comment Articles', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_from_new_to_old', 'Nuo naujausio iki seniausio', 'From newest to oldest', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_from_old_to_new', 'Nuo seniausio iki naujausio', 'From older to new', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_order_by_date', 'Pagal datà', 'By date', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_order_by_join', 'Pagal lankomumà', '', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_order_by_vote', 'Pagal balsavimà', 'By Vote', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_order_by_abc', 'Pagal abëcëlæ', 'by Alphabetic', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_order_by', 'Rûðiuoti', 'Order', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_show_url', 'Leisti nurodyti kito straipsnio URL pateikimui', 'Allow diffrent url to another Article', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_save', 'Iðsaugoti nustatymus', 'Save settings', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_by_join', 'Pagal lankomumà', 'By visit', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_send', 'Atsiøsti straipsná', 'Send article', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_write', 'Raðyti straipsná', 'Write article', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_send_email', 'Atsiøsti straipsná á El. Paðtà', 'Send Article in Email', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('article_show_url2', 'Atsiøsti straipsnio URL nuorodà', 'Send Article URL link', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('lang_name', 'Kalba', 'Language', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('lang_value', 'Trumpinys', 'Short name', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('lang_new_create', 'Naujos kalbos sukûrimas', 'Create new language', '', '', '', '', '');
+INSERT INTO `kalbos` VALUES ('lang_create_new', 'Sukurti', 'Create', '', '', '', '', '');

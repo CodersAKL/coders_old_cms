@@ -1,0 +1,42 @@
+<?php
+
+// Isvalom kategorija kad galetume susitikrinti ar teisinga
+$cat = strip_tags($_GET['explode'][0]);
+
+$article_sql = mysql_query("
+							SELECT
+								`straipsniai`.`pavadinimas`,
+								`straipsniai`.`alias`,
+								`straipsniai`.`aprasymas`,
+								`straipsniai`.`autorius`,
+								`straipsniai`.`data`,
+								`straipsniai`.`balsavimas`,
+								`straipsniai_kategorijos`.`kategorija`,
+								`straipsniai_kategorijos`.`alias` AS `kat_alias`
+							FROM
+								`straipsniai`
+							Inner Join `straipsniai_kategorijos` ON `straipsniai_kategorijos`.`id` = `straipsniai`.`kategorija_id`
+							WHERE
+								`straipsniai`.`aktyvus` =  'Y' AND
+								`straipsniai_kategorijos`.`alias` =  " . escape($cat). "
+							LIMIT 0, 10
+") or die(mysql_error());
+
+if (mysql_num_rows($article_sql) != 0) {
+	while($article_row = mysql_fetch_assoc($article_sql)) {		$article_category = $article_row['kategorija'];		$table_data[] = '<a href="article/' . $article_row['kat_alias'] .'/' . $article_row['alias'] .'">' . $article_row['pavadinimas'] .'</a>';
+		$table_data[] = '<a href="user/' . $article_row['autorius'] .'">' . $article_row['autorius'] .'</a>';
+	}
+	$smarty->assign('table_th',array('Pavadinimas','Autorius'));
+	$smarty->assign('table_tr',array('bgcolor="#eeeeee" class="left_articles" style="border-right:1px solid silver"','bgcolor="#dddddd" class="left_articles"'));
+	$smarty->assign('table_td',array('style="border-right:1px solid silver"','style="border-right:1px solid silver"'));
+	$smarty->assign('table_data',$table_data); unset($module_stats);
+	$smarty->assign('article_category',$article_category);
+
+	// Atvaizduojam nustyta faila
+	$smarty->assign("style",$style);
+	$mods['content'] = "modules/article/article_show_all.tpl";
+	unset($article_sql,$article_row,$article,$article_category);
+}
+
+
+?>

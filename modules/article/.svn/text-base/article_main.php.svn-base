@@ -1,0 +1,30 @@
+<?php
+
+// Pradinis langas pasirinkus "Straipsniai" menu punkta
+if(empty($_GET['explode'][0])) {
+	// Straipsniu kategorijos
+	require_once("article_category.php");
+
+ 	// Naujausi straipsniai
+ 	require_once("article_new.php");
+
+	// Atvaizduojam nustyta faila
+	$smarty->assign("style",$style);
+	$mods['content'] = "modules/article/article_main.tpl";
+}
+
+// Jei pasirinkta kategorija
+if(!empty($_GET['explode'])) {	// Jei pasirinkta kategorija bet ne pats straipsnis
+	if (!empty($_GET['explode'][0]) && empty($_GET['explode'][1])) {		require_once("article_show_all.php");
+	}
+
+	// Jei pasirinktas straipsnis ziurejimui includinam atitinkama faila
+	if (!empty($_GET['explode'][0]) && !empty($_GET['explode'][1])) {
+		require_once("article_show.php");
+	}
+
+}
+
+
+
+?>

@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>Form Validator</title>
+	<script language="JavaScript" src="validator.js"></script>
+</head>
+
+<body bottommargin="15" topmargin="15" leftmargin="15" rightmargin="15" marginheight="15" marginwidth="15" bgcolor="white">
+
+<form action="demo2.html" method="get" name="login" onsubmit="return v.exec()">
+	<table cellspacing="1" cellpadding="2" border="0" width="100%">
+		<tr bgcolor="#ffffff">
+			<td id="t_uname" width="10%">&nbsp;Name:</td>
+			<td><input type="text" name="uname" size="10" class="ctrl"></td>
+		</tr>
+		<tr bgcolor="#ffffff"> 
+			<td id="t_email">&nbsp;Email:<span class="inputHighlighted">*</span></td>
+			<td><input type="text" name="email" size="35" class="ctrl"></td>
+		</tr>
+		<tr bgcolor="#ffffff"> 
+			<td id="t_password">&nbsp;Password:<span class="inputHighlighted">*</span></td>
+			<td><input type="password" name="pass" size="35" class="ctrl"></td>
+		</tr>
+		<tr bgcolor="#ffffff"> 
+			<td id="t_password_copy" nowrap>&nbsp;Password copy:<span class="inputHighlighted">*</span>&nbsp;</td>
+			<td><input type="password" name="pass_copy" size="35" class="ctrl"></td>
+		</tr>
+	</table>
+	<input type="submit" value="Submit" name="Submit"></td>
+</form>
+
+<script>
+// form fields description structure
+var a_fields = {
+	'uname' : {
+		'l': 'Name',  // label
+		'r': false,    // required
+		'f': 'alpha',  // format (see below)
+		't': 't_uname',// id of the element to highlight if input not validated
+		
+		'm': null,     // must match specified form field
+		'mn': 2,       // minimum length
+		'mx': null       // maximum length
+	},
+	'email' : {'l':'E-mail','r':true,'f':'email','t':'t_email'},
+	'pass' : {'l':'Password','r':true,'f':'alphanum','t':'t_password','m':'pass_copy'},
+	'pass_copy' : {'l':'Password copy','r':true,'f':'alphanum','t':'t_password_copy'}
+},
+o_config = {
+	'to_disable' : ['Submit'],
+	'alert' : 1
+}
+
+// validator constructor call
+var v = new validator('login', a_fields, o_config);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Klaidų modulis
+1. 404 puslapio redagavimas
+2. Klaidų pranešimų redagavimas
+-----------------------------
+Galimi papildomi moduliai
+1. Pranešti administraciai - "report" modulis

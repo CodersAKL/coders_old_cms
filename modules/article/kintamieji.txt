@@ -1,0 +1,13 @@
+;article_category.tpl
+
+// Kalbos
+{$lang.category} - "Kategorijos"
+{$lang.category_empty} - "Neivestos kategortijos" 
+
+// Kategoriju isvedimas
+{$article[article_more].alias} - Kategorijos nuoroda "alias'as"
+{$article[article_more].kategorija} - Kategorijos pavadinimas
+{$article[article_more].total} - Kiek esama straipsniu kategorijoje
+
+{$article} - Isvedamos straipsnio kategorijos
+{$style} - Stilius. Visada prirasyti prie kiekvieno stiliaus panaudojimo.
